@@ -1,17 +1,18 @@
-<mat-sidenav-container fullscreen>
 
-  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width:'200px'}">
-    <mat-toolbar color="primary">
+<mat-sidenav-container fullscreen style="background-color: #5ba35e;">
+
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width:'200px'}" style="background-color: #000000;">
+    <mat-toolbar style="background-color: #000000;">
       <span>Menú</span>
       <span class="spacer"></span>
-      <button mat-icon-button (click)="sidenav.toggle()">
+      <button mat-icon-button (click)="sidenav.toggle()" style="background-color: #000000;">
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar>
 
   </mat-sidenav>
 
-  <mat-toolbar color="primary">
+  <mat-toolbar style="background-color: #000000;">
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -27,8 +28,166 @@
   <div class="container">
     <router-outlet></router-outlet>
     <br>
-    <div style="width: 100vw; font-size: 20px; height: 100hv; display: flex; flex-direction: column; text-align: center;">
+    <div class="entrada">
       <span>Muchas gracias por visitarnos.</span>
+    </div>
+
+    <div [formGroup]="registrosolicitudesFG">
+      <div class="filtro" >
+        <div class="input-group">
+          <div class="input-4">
+            <h4>Afectado:</h4>
+            <mat-form-field class="input-child" appearance="outline">
+              <!--va dentro del input formControlName="dni" -->
+              <input
+                matInput
+                type="text"
+                placeholder="Afectado"
+                autocomplete="off"
+                formControlName="afectado"
+              />
+            </mat-form-field>
+          </div>
+          <div class="input-4">
+            <h4>N° Solicitud:</h4>
+            <mat-form-field class="input-child" appearance="outline">
+              <!--va dentro del input formControlName="dni" -->
+              <input
+                matInput
+                type="text"
+                placeholder="Número de solicitud"
+                autocomplete="off"
+                formControlName="nro_solicitud"
+              />
+            </mat-form-field>
+          </div>
+          <div class="input-4">
+            <h4>Fecha de Solicitud:</h4>
+            <mat-form-field class="input-child" appearance="outline">
+              <!--va dentro del input formControlName="dni" -->
+              <input
+                matInput
+                type="text"
+                placeholder="Fecha de Solicitud"
+                autocomplete="off"
+                formControlName="fecha_solicitud"
+              />
+            </mat-form-field>
+          </div>
+          <div class="input-4">
+            <h4>Solicitud:</h4>
+            <mat-form-field class="input-child" appearance="outline">
+              <!--va dentro del input formControlName="dni" -->
+              <input
+                matInput
+                type="text"
+                placeholder="solicitud"
+                autocomplete="off"
+                formControlName="solicitud"
+              />
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <div class="input-group">
+          <div class="input-4">
+            <h4>Cuenta de Creación:</h4>
+            <mat-form-field class="input-child" appearance="outline">
+              <!--va dentro del input formControlName="dni" -->
+              <input
+                matInput
+                type="text"
+                placeholder="Cuenta de Creación"
+                autocomplete="off"
+                placeholder="cuenta_creacion"
+                formControlName="cuenta_creacion"
+              />
+            </mat-form-field>
+          </div>
+
+          <!--esto va debajo de click -- > [ngClass]="{
+            btnEnabled: formStatus == true,
+            btnDisabled: formStatus == false
+          }"
+          [disabled]="!formStatus"
+          (click)="aniadirDatosPago()"-->
+          <button
+            mat-flat-button
+            class="boton"
+            (click)="aniadirSolicitudes()"
+            >
+            Añadir Datos de Solicitud
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+
+        <br>
+
+        <div class="outlet-hijo">
+          <!-- *ngIf="mos" -->
+          <div class="main-table" >
+            <!--tabla cuerpo -->
+
+            <div class="table-body">
+              <table id="TablaTransaccionesR">
+                <tr class="table-body-head">
+                  <td>
+                    <h4>N° Solicitud</h4>
+                  </td>
+                  <td>
+                    <h4>Fecha de Solicitud</h4>
+                  </td>
+                  <td>
+                    <h4>Solicitud</h4>
+                  </td>
+                  <td>
+                    <h4>Cuenta de Creación</h4>
+                  </td>
+                  <td>
+                    <h4>Afectado</h4>
+                  </td>
+                </tr>
+
+                <tr
+                  class="table-body-row"
+                  *ngFor="
+                    let item of scgroup.solicitud
+                  "
+                >
+
+                  <td>{{ item.idsolicitud }}</td>
+                  <td>{{ item.fecha_solicitud }}</td>
+                  <td>{{ item.solicitud }}</td>
+                  <td>{{ item.fecha_creacion }}</td>
+                  <td>{{ item.afectado }}</td>
+                  <!-- (click)="eliminarItemCuentaBancaria(item.idmodulo_prov)" -->
+                  <td>
+                    <div style="display: flex">
+                      <button
+                        mat-raised-button
+                        matTooltip="Eliminar Solicitud"
+                        style="margin-right: 10px; cursor: pointer"
+                        [ngStyle]="{
+                          'background-color': '#ff0000',
+                          'color': '#ffffff',
+                          'border': 'none',
+                          'padding': '5px 10px',
+                          'cursor': 'pointer'
+                        }"
+
+                      >
+                        <mat-icon style="color: white">delete</mat-icon>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>
