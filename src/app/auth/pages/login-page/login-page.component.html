@@ -1,0 +1,60 @@
+<div style="width: 100vw; height: 100hv; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+  <form class="login-form"
+      autocomplete="off"
+      [formGroup]="myForm"
+      (ngSubmit)="onLogin(username, password)"
+      style="width: 100vw; font-size: 25px; height: 100hv; display: flex; flex-direction: column; justify-content: center; align-items: center; gap:10px"
+      >
+
+    <mat-label style="font-size: 35px; padding-top: 40px; color: rgb(191, 81, 99);">
+      Inicia Sesión
+      <mat-icon>account_circle</mat-icon>
+    </mat-label>
+    <br><br><br>
+
+    <mat-label>Usuario:</mat-label>
+      <mat-form-field appearance="fill">
+        <input class="input"
+               type="username"
+               matInput
+               formControlName="username"
+               placeholder="Usuario">
+        <span class="focus-input"></span>
+      </mat-form-field>
+      <br>
+      <mat-label>Contraseña:</mat-label>
+      <mat-form-field>
+        <input class="input100"
+               type="password"
+               matInput
+               formControlName="password"
+               placeholder="Contraseña">
+        <span class="focus-input100"></span>
+      </mat-form-field>
+
+    <div class="text-right p-t-8 p-b-31"></div>
+
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+
+            <button mat-button mat-flat-button color="primary" type="submit">
+                <mat-icon>login</mat-icon>
+                Iniciar Sesión
+            </button>
+        </div>
+    </div>
+    <br><br>
+    <div class="flex-col-c p-t-60">
+        <span class="txt1 p-b-17">
+            ¿No tienes cuenta?
+        </span>
+
+        <a routerLink="/auth/register" class="txt2">
+            Crear una aquí
+        </a>
+    </div>
+  </form>
+
+</div>

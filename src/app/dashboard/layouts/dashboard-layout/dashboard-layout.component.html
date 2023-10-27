@@ -1,0 +1,40 @@
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width:'200px'}">
+    <mat-toolbar color="primary">
+      <span>Menú</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="spacer"></span>
+
+    <button mat-button (click)="onLogout()">
+      Cerrar Sesión
+      <mat-icon>logout</mat-icon>
+    </button>
+
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+    <br>
+    <div style="width: 100vw; font-size: 20px; height: 100hv; display: flex; flex-direction: column; text-align: center;">
+      <span>Muchas gracias por visitarnos.</span>
+    </div>
+
+  </div>
+
+
+
+</mat-sidenav-container>
+
+
