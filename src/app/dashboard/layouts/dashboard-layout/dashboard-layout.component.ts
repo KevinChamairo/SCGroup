@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/service/auth.service';
 
 @Component({
@@ -130,11 +130,37 @@ export class DashboardLayoutComponent implements OnInit {
 
     this.scgroup.solicitud.push({ ...objetoSolicitudes});
 
-
   }
 
   onLogout() {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  eliminarSolicitud(idsolicitud: string) {
+    const index = this.scgroup.solicitud.findIndex(item => item.idsolicitud === idsolicitud);
+
+    if (index !== -1) {
+      this.scgroup.solicitud.splice(index, 1);
+    }
+    console.warn('Se eliminò y quedò: ',this.scgroup.solicitud);
+
+  }
+
+  public navigationExtras: NavigationExtras = {
+    state: {
+      value: null,
+    },
+  };
+
+  agregarEvaluacion( obj: any) {
+    this.navigationExtras.state!["value"] = obj;
+    console.log(this.navigationExtras.state!["value"])
+    localStorage.setItem('solicitud', JSON.stringify(obj));
+    console.log('Agregando evaluacion exitosamente...');
+    this.router.navigate(['dashboard/agregar-evaluacion'],
+    this.navigationExtras
+    );
+  }
+
 }

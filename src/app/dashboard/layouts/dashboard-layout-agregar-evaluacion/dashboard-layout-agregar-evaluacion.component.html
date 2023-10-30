@@ -1,0 +1,161 @@
+<div [formGroup]="registroevaluacionesFG" style="background-color: #796fcf;">
+  <div class="filtro" >
+    <div class="input-group">
+      <div class="input-4">
+        <h4>Evaluacion:</h4>
+        <mat-form-field class="input-child" appearance="outline">
+          <!--va dentro del input formControlName="dni" -->
+          <input
+            matInput
+            type="text"
+            placeholder="Evaluacion"
+            autocomplete="off"
+            formControlName="evaluacion"
+          />
+        </mat-form-field>
+      </div>
+      <div class="input-4">
+        <h4>Fecha de creación:</h4>
+        <mat-form-field class="input-child" appearance="outline">
+          <!--va dentro del input formControlName="dni" -->
+          <input
+            matInput
+            type="text"
+            placeholder="Fecha de creación"
+            autocomplete="off"
+            formControlName="fecha_creacion"
+          />
+        </mat-form-field>
+      </div>
+      <div class="input-4">
+        <h4>Fecha de Evaluación:</h4>
+        <mat-form-field class="input-child" appearance="outline">
+          <!--va dentro del input formControlName="dni" -->
+          <input
+            matInput
+            type="text"
+            placeholder="Fecha de Evaluación"
+            autocomplete="off"
+            formControlName="fecha_evaluacion"
+          />
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="input-group">
+      <div class="input-4">
+        <h4>N° Evaluacion:</h4>
+        <mat-form-field class="input-child" appearance="outline">
+          <!--va dentro del input formControlName="dni" -->
+          <input
+            matInput
+            type="text"
+            placeholder="Número de Evaluación"
+            autocomplete="off"
+            formControlName="nro_evaluacion"
+          />
+        </mat-form-field>
+      </div>
+
+      <button
+        mat-flat-button
+        class="boton"
+        (click)="aniadirEvaluaciones()"
+        >
+        Añadir Datos de Solicitud
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+
+      <button
+        mat-flat-button
+        class="boton"
+        (click)="regresar()"
+        >
+        Regresar
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+
+    <br>
+
+    <div class="outlet-hijo">
+      <!-- *ngIf="mos" -->
+      <div class="main-table" >
+        <!--tabla cuerpo -->
+
+        <div class="table-body">
+          <table id="TablaTransaccionesR">
+            <tr class="table-body-head">
+              <td class="centered">
+                <h4>N° Evaluacion</h4>
+              </td>
+              <td class="centered">
+                <h4>Evaluacion</h4>
+              </td>
+              <td class="centered">
+                <h4>Fecha de Creación</h4>
+              </td>
+              <td class="centered">
+                <h4>Fecha de Evaluación</h4>
+              </td>
+              <td class="centered">
+                <h4>Acciones</h4>
+              </td>
+            </tr>
+
+            <tr
+              class="table-body-row"
+              *ngFor="
+                let item of data103arrEvaluaciones
+              "
+            >
+
+              <td *ngIf="item.idevaluacion != undefined" class="centered">{{ item.idevaluacion }}</td>
+              <td *ngIf="item.idevaluacion != undefined" class="centered">{{ item.evaluacion }}</td>
+              <td *ngIf="item.idevaluacion != undefined" class="centered">{{ item.fecha_creacion }}</td>
+              <td *ngIf="item.idevaluacion != undefined" class="centered">{{ item.fecha_evaluacion }}</td>
+              <!-- (click)="eliminarItemCuentaBancaria(item.idmodulo_prov)" -->
+              <td *ngIf="item.idevaluacion != undefined" class="centered">
+                <!-- (click)="eliminarEvaluacion(item.idsolicitud)" -->
+                <!-- (click)="editarEvaluacion(item)" -->
+                <div style="display: flex">
+                  <button
+                    mat-raised-button
+                    matTooltip="Eliminar Evaluación"
+                    style="margin-right: 10px; cursor: pointer"
+                    [ngStyle]="{
+                      'background-color': '#ff0000',
+                      'color': '#ffffff',
+                      'border': 'none',
+                      'padding': '5px 10px',
+                      'cursor': 'pointer'
+                    }"
+                    (click)="eliminarEvaluacion(item.idevaluacion)"
+                  >
+                    <mat-icon style="color: white">delete</mat-icon>
+                  </button>
+
+                  <!-- <button
+                  mat-raised-button
+                  matTooltip="Agregar Evaluación"
+                  color="primary"
+                  style="margin-right: 10px; cursor: pointer"
+                  [ngStyle]="{
+                    'background-color':'#008467'
+                  }"
+                  (click)="agregarEvaluacion(item)"
+                  >
+                    <mat-icon style="color: white">group_add</mat-icon>
+                  </button> -->
+                </div>
+              </td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

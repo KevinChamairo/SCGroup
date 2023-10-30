@@ -86,7 +86,7 @@
                 formControlName="solicitud"
               />
             </mat-form-field>
-            <mat-form-field
+            <!-- <mat-form-field
             class="ta"
             style="font-size: 16px"
             appearance="outline"
@@ -100,7 +100,7 @@
               style="color: #80848e"
               formControlName="solicitud"
             ></textarea>
-          </mat-form-field>
+          </mat-form-field> -->
           </div>
 
         </div>
@@ -190,11 +190,23 @@
                           'padding': '5px 10px',
                           'cursor': 'pointer'
                         }"
-
+                        (click)="eliminarSolicitud(item.idsolicitud)"
                       >
                         <mat-icon style="color: white">delete</mat-icon>
                       </button>
                     </div>
+                    <button
+                    mat-raised-button
+                    matTooltip="Contactos"
+                    color="primary"
+                    style="margin-right: 10px; cursor: pointer"
+                    [ngStyle]="{
+                      'background-color':'#008467'
+                    }"
+                    (click)="agregarEvaluacion(item)"
+                    >
+                    <mat-icon style="color: white">group_add</mat-icon>
+                  </button>
                   </td>
                 </tr>
               </table>

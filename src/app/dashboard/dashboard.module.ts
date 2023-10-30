@@ -5,10 +5,13 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { DashboardLayoutAgregarEvaluacionComponent } from './layouts/dashboard-layout-agregar-evaluacion/dashboard-layout-agregar-evaluacion.component';
 
 @NgModule({
-  declarations: [ DashboardLayoutComponent ],
+  declarations: [
+    DashboardLayoutComponent,
+    DashboardLayoutAgregarEvaluacionComponent
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
